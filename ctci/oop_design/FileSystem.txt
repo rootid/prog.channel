@@ -1,0 +1,42 @@
+FileSystem is abstraction that provide interfaces 
+
+FS 
+ files
+    fd
+     moveToStart
+     moveToEnd
+     moveToSpecificPosition
+ dirs 
+ 
+ lock
+    for synchronization purpose
+        -read lock  
+        -write lock
+ acess rights
+    -user
+    -group
+    -all
+ permission
+    -read
+    -write
+    -execute 
+  size
+  name
+  inodeNumber
+  access time
+  fileType 
+    text
+    binary
+    executable
+  
+  
+Tree of directories
+    -represenet hierarchy
+    
+
+interface 
+1.open
+2.read
+3.write
+4.close
+
