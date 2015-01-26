@@ -2,13 +2,13 @@
 #include<string>
 using namespace std;
 //aaabbaa
-bool isPalindrome (string &input) {
+bool isPalindrome (string &s) {
 
     int start = 0;
-    int end = input.length() - 1;
+    int end = s.length() - 1;
     
     while (start < end ) {
-        if (a[start++] != a[end--]) {
+        if (s[start++] != s[end--]) {
             return false;
         }
     }
@@ -16,25 +16,61 @@ bool isPalindrome (string &input) {
 }
 
 
-int maxLenPalindrome (string input,int k,int& maxLen) {
+void maxLenPalindrome (string input,int k,int& maxLen) {
     
     int len = input.length();
     if (k == input.length()) {
-        return;
+        return ;
     }
     for (int i=k;i<len;i++) {
-        string sub = input.substr(k,i-k+1);  a 
+        string sub = input.substr(k,i-k+1);  
         if ( isPalindrome (sub) ) {
             cout << sub << endl;
-            int maxL = max(maxLen,sub.length());
-            maxLenPalindrome (input,i+1,maxL);
+            int l = sub.length();
+            maxLen = max(maxLen,l);
+            maxLenPalindrome (input,i+1,maxLen);
         }
     }
 }
+
+
+
+bool isPalindrome (string &s) {
+
+    int start = 0;
+    int end = s.length() - 1;
+    
+    while (start < end ) {
+        if (s[start++] != s[end--]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+void maxLenPalindrome (string input,int k,int& maxLen) {
+    
+    int len = input.length();
+    if (k == input.length()) {
+        return ;
+    }
+    for (int i=k;i<len;i++) {
+        string sub = input.substr(k,i-k+1);  
+        if ( isPalindrome (sub) ) {
+            cout << sub << endl;
+            int l = sub.length();
+            maxLen = max(maxLen,l);
+            maxLenPalindrome (input,i+1,maxLen);
+        }
+    }
+}
+
 
 int main () {
 
     string input = "aaaabba";
     int maxLen = -1;
     maxLenPalindrome (input,0,maxLen);
+    cout << "the maxLen " << maxLen << endl;
 }
