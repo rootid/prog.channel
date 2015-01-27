@@ -15,6 +15,7 @@ void enumPermute (string s,int k,vector<string>& result) {
     if (k == len) {
         cout << s << endl;
         result.push_back(s);
+        return;
     }
     for (int i=k;i<len;i++) {
         swap (s[k],s[i]);
@@ -27,7 +28,7 @@ void enumPermute (string s,int k,vector<string>& result) {
 
 int main () {
     
-    string s = "123";
+    string s = "1234";
     vector<string> result;
     enumPermute (s,0,result);
 }
