@@ -1,2 +1,95 @@
 Pick the character
     pick the candidates
+
+
+
+
+//#of candidates = 2 : either '(' or ')'
+//add 1 candiate and remove other
+
+ ( ) ()
+void genParenthesis (int n,int k,int leftP,int righP,string &result,vector<string>& op) {
+    
+    if (k == n ) {
+        op.push_back(result);
+        return;
+    }
+    
+    if (leftP < n) {
+              
+                 result.push_back ('(');
+                genParenthesis (n,leftP+1,rightP,result,op);
+                result.pop_back();
+                
+            }
+            if (lefP > rightP) {
+                result.push_back(')');
+                genParenthesis (n,rightP+1,rightP,result,op);
+                result.pop_back();
+            }
+   
+}
+
+
+//# of candiates ata each level element is present 1 or not present 0
+
+void genSubset (string s,int k,vector<int>&candi) {
+    int n = s.lenght();
+    if (k == n) {
+        
+        return;
+    }
+    if (k < n) {
+    candi [k] = 1;
+    genSubset (k+1)
+    
+     candi [k] = 0;
+     genSubset (k+1)
+    }
+}
+
+//12
+//21
+
+//123
+//213
+//132
+//
+
+//1 2 3
+//1 32
+//21 3
+//2 31
+//321
+//312
+
+
+void genPermuatation (string s,int k) {
+    
+    for (int i=k;i<n;i++) {
+        swap(s[k],s[i]);
+        genPermuatation (s,k+1);
+        swap(s[k],s[i]);
+    }
+
+}
+ k ,k+1
+"123" : ""
+for (int i=0;i<c;i++) {
+   s.push_back(u_map[c][i]);
+   callTelephone(k+1)
+   s.pop_back();
+}
+
+
+//enum queen
+//k
+for (int i=0;i<c;i++) {
+   
+   //prune if not saify condition
+   //check diagonal left,right,row and colum
+       if ok 
+       //set row,col and diag
+       callenumQueen(k+1)
+       //reset
+}

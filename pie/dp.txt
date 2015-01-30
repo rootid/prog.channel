@@ -1,0 +1,98 @@
+
+int findMinInsertions(string str, int l, int h)
+{
+    // Base Cases
+    if (l > h) return INT_MAX;
+    if (l == h) return 0;
+    if (l == h - 1) return (str[l] == str[h])? 0 : 1;
+ 
+    // Check if the first and last characters are same. On the basis of the
+    // comparison result, decide which subrpoblem(s) to call
+    
+    int opt = 0;
+    if (str[l] == str[h]) {
+       optMatch =  findMinInsertions(str, l + 1, h - 1)
+     } else {
+       optMatch = min(findMinInsertions(str, l, h - 1),findMinInsertions(str, l + 1, h)) + 1);
+     }
+     return optMatch;
+                              
+}
+
+
+int findEditDistnce (string p,string q) {
+    int m = p.length();
+    int n = q.length();
+    if(m == 0) {
+        return n;
+    }
+    if (n == 0) {
+        return m;
+    }
+    int m = findEditDistnce (p.substr(1,m-1),q.substr(1,n-1)) + p[0] == q[0] ? 0 : 1;
+    int d = findEditDistnce (p,q.substr(1,n-1)) + 1;
+    int i = findEditDistnce (p.substr(1,m-1),q) + 1;
+    int opt = min (m,d);
+    opt = min (opt,i);
+    return opt;
+}
+
+int findLCS (string p,string q) {
+    int m = p.length();
+    int n = q.length();
+    if(m == 0 || n == 0) {
+        return 0;
+    }
+    
+    int m = findEditDistnce (p.substr(1,m-1),q.substr(1,n-1)) + p[0] == q[0] ? 1 : 0;
+    int d = findEditDistnce (p,q.substr(1,n-1)) + 0;
+    int i = findEditDistnce (p.substr(1,m-1),q) + 0;
+    int opt = max (m,d);
+    opt = max (opt,i);
+    return opt;
+}
+
+//String scrambling
+//Example
+//x yy yyy y
+//y yy yyy x
+bool scrambleString (string a,string b) {
+    
+    int aLen = a.length();
+    int bLen = b.length ();
+    if (aLen != bLen) {
+        return false;
+    }    
+    char aStore[256];
+    memset (aStore,0,sizeof(aStore));
+    
+    char bStore[256];
+    memset (bStore,0,sizeof(bStore));
+    
+
+    for (int i=0;i<aLen;i++) {
+        aStore[a[i]] ++;
+    }
+    
+    for (int i=0;i<bLen;i++) {
+        aStore[b[i]] --;
+    }
+    
+    for (int i=0;i<256;i++) {
+        if (aStore[i] != 0) {
+            return false;
+        }
+    }
+    
+    if (aLen == bLen  && aLen == 1 && a[0] == b[0]) {
+        return true;
+    }
+    for (int i=1;i<aLen;i++) {
+       bool result = ( scrambleString (a.substr(0,i),b.substr(0,i)) ) &&  
+                     ( scrambleString (a.substr(i,aLen - i),b.substr(i,bLen - i)) );
+                     //for right part remove out the part of length i 
+       result = result || ( scrambleString (a.substr(0,i),b.substr(bLen - i,i) ) &&
+                             scrambleString (a.substr(i,aLen - i),b.substr(0,bLen - i) ) );
+    
+    }
+}

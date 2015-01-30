@@ -12,7 +12,7 @@ using namespace std;
 //output: [[add, dad], [care, race]]
 
 vector<vector<string> > getAnagramList (vector<string>& sList) {
-
+    //listing the vector
     vector< vector<string> > result;
     int n = sList.size();
     int idx = 0;
@@ -38,6 +38,29 @@ vector<vector<string> > getAnagramList (vector<string>& sList) {
     
     return result;
 }
+
+
+int getLc (int n) {
+    return 2 * n;
+}
+
+int getRC (int n) {
+    return (2 * n) + 1;
+}
+
+struct TrieNode {
+    
+    char val;
+    TrieNode *child[R];
+    int leafV ;
+    TrieNode (char aVal,int aLeafV) :
+        val (aVal),leafV (aLeafV)
+    {
+        
+    };
+
+};
+
 
 int main () {
     

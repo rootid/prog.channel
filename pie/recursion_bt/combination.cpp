@@ -49,4 +49,5 @@ int main () {
     vector<int> cand (s.length(),0);
     vector<string> result;
     enumCombination (s,0,cand,result);
+
 }

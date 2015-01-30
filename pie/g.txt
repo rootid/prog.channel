@@ -1,0 +1,100 @@
+
+Q: write a regexp for a float (x=1.2)
+A:
+([0-9]*\.[0-9]+)
+ 
+([0-9]+)
+ 
+1 
+1.0
+.1
+1.0
+.1
+.
+.102
+
+s/type(1)
+
+Q: implement a class Queue using a linked list
+A:
+
+//insert from end delete from other end
+
+struct  Node {
+   int val;
+   Node *next;
+   Node (int aVal) : 
+ val(aVal),next(NULL) 
+{
+
+ };	
+
+};
+
+//1,2,3,4
+//2,1
+struct Queue {
+	//int Item[] ;
+        Node *front;
+        Node *tail;
+	int size;
+	int count;
+	Queue (int asize) :
+	    //size (aSize),count(0)
+            front(NULL) ,tail (NULL)
+	{
+	   //Item = new int [size];
+        };
+    bool isEmpty();
+    bool insertIntoQueue (int ele);
+    int RemoveFromQueue ();
+
+}; 
+
+bool isEmpty (Queue q) {
+if  (q.count == size) {
+	return false;
+}
+return true;
+}
+
+void insertIntoQueue (Queue q,int ele);
+bool removeFromQueue();
+
+
+bool insertIntoQueue (Queue e,int ele) {
+if (e.isEmpty()) {
+    e.Item[e.count++] = ele;
+                return true;
+}	
+return false;
+}
+
+
+Q: design a distributed file system
+A:
+
+//chunk : 64 MB
+//single Node : chunk
+
+//DS nodes : chunk (if fails)
+//arbiter :   (if fails) 
+//second arbiter (if fails)
+
+//take care of DS Nodes 
+//DS Nodes : UDP  : fast  : UDP 
+
+//logging : detect failure (arbiter,sec arbiter)
+
+//Distribute data among nodes  (arbiter)
+
+//arbiter : (information where data is stored)
+
+//External node<-> DSNodes
+
+//Timing : guranteed ordering
+//each nodes with accoring time with DS Nodes
+//Serving request :
+
+//TCP : total ordering , not fast
+
