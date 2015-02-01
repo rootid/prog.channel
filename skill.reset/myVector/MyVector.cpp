@@ -22,6 +22,16 @@ MyVector :: MyVector(size_t n) :
 
 }
 
+//Copy CTOR
+MyVector::MyVector(const MyVector& otherVec) :
+    logicalSize(otherVec.logicalSize)
+    ,currentCapacity (otherVec.currentCapacity )
+    ,itemPtr (new string[otherVec.logicalSize])
+{
+    for (size_t i=0; i<logicalSize; ++i)
+        itemPtr[i] = otherVec.itemPtr[i];
+}
+
 MyVector :: ~MyVector() {
     delete [] itemPtr;
 }
