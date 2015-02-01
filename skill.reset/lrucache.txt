@@ -1,0 +1,24 @@
+//in lrucache elements accessed recently will have high priority
+//than the other elements
+
+//operations of LRU cache 
+1.Remove/evict the least used page
+2.set/update the page location head/tail based on the access
+3.insert the page if not available.
+
+capacity = 2
+set(2,1)
+set(2,2)
+get(2)
+set(1,1)
+set(4,1)
+get(2)
+
+NOTE 2 things 
+1.LRU : least recently used
+    2 Underlying data structures
+    1.DLL : 1. Easy to move the node to the front i.e. node that accessed recently ( Move the node in O(1) time )
+            2. Easy to check the capacity and accrodingly delete the node at the tail position
+    2.unordered_map : result in get operation O(1) time
+
+2.LFU : least frequently used
