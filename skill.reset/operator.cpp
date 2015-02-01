@@ -12,7 +12,6 @@ struct Point {
     {
 
     };
-   
     //Unary operator overloading
     bool operator==(const Point &p);
 
