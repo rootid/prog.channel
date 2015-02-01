@@ -1,4 +1,4 @@
-OBJS = main.o MyVector.o
+OBJS = MyVector.o main.o
 CC = g++
 DEBUG = -g
 CFLAGS = -Wall -pedantic $(DEBUG)
