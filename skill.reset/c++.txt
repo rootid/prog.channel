@@ -1,0 +1,22 @@
+Variables
+
+local
+
+global
+
+static
+
+Data area
+stack
+heap
+static 
+
+
+virtual functions
+
+
+pass address (address will have same size) v/s pass by value (diff types)
+
+
+References are object alias
+References are like constant pointers that are automatically dereferenced by the compiler.
