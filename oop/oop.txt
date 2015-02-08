@@ -1,0 +1,245 @@
+
+Identify core object 
+
+Establish relationship among them (IS-A/HAS-A)
+
+List out responsibility.
+
+Seperate interface and implementation.
+
+Delegate resposibility.
+
+Develop client
+
+Recognize Code Smells
+
+
+OOP design 
+iterative and exploratory process
+
+
+Snake and ladder game
+    
+Players
+Dice
+Board
+Squares (start,end)
+Snakes
+Ladders
+
+Winner : State of a Player
+
+
+IS-A Square
+Snakes
+Ladders
+Start
+End
+
+
+Resposibility
+
+Player
+ moveToNextSquare
+ Remember position
+
+Game
+Keep trak of Game state
+
+First Square
+hold multiple players
+
+Snakes
+Sends player to lower position than current
+
+Ladder
+Sends Player to next higher position than current
+
+Dice
+Generate random # from 1 to 6
+
+Last square
+List the winning position
+
+
+Top DOWN decomposition + Single Resposibility Principle (SRP)
+
+
+
+ramesh = new Player("Ramesh");
+suresh = new Player("Suresh");
+Player[] args = { ramesh, suresh };
+Game game = new Game(12, args);
+game.setSquareToLadder(2, 4);
+game.setSquareToLadder(7, 2);
+game.setSquareToSnake(11, -6);
+assertTrue(game.notOver());
+assertTrue(game.firstSquare().isOccupied());
+assertEquals(1, ramesh.position());
+assertEquals(1, suresh.position());
+assertEquals(ramesh, game.currentPlayer());
+
+
+Seperate Interface and Implementation
+
+
+Information hiding: a component should provide all and 
+only the information that the user needs to effectively use it.
+Abstraction = elimination of inessential detail
+Information hiding = providing only the information a client needs to know
+Encapsulation = bundling operations to access related data as a data abstraction.
+
+In object-oriented languages we can implement data abstractions as classes.
+
+
+Encapsulated State
+
+
+public class Game {
+    private List<ISquare> squares;
+    private int size;
+    private Queue<Player> players;
+    private Player winner;
+}
+
+
+public class Player {
+    private String name;
+    private ISquare square;
+}
+
+
+public class Square implements ISquare {
+    protected int position;
+    protected Game game;
+    private Player player;
+}
+
+
+
+Keep behaviour close to state
+
+
+public class Square implements ISquare {
+    private Player player;
+    public boolean isOccupied() {
+    return player != null;
+    }
+    public void enter(Player player) {
+    this.player = player;
+    }
+    public void leave(Player _) {
+    this.player = null;
+    }
+
+}
+
+
+Program to an interface, not an implementation
+
+public interface ISquare {
+    public int position();
+    public ISquare moveAndLand(int moves);
+    public boolean isFirstSquare();
+    public boolean isLastSquare();
+    public void enter(Player player);
+    public void leave(Player player);
+    public boolean isOccupied();
+    public ISquare landHereOrGoHome();
+}
+
+
+Players do not  need to know all  the different kinds  of squares.
+
+
+public class Player {
+    private ISquare square;
+    public void moveForward(int moves) {
+        square.leave(this);
+        square = square.moveAndLand(moves);
+        square.enter(this);
+    } 
+}
+
+
+Objects send messages to one another;  they don’t “call methods”
+
+
+public class Square implements ISquare {
+    private Player player;
+
+    public void enter(Player player) {
+        this.player = player;
+    }
+}
+
+
+public class FirstSquare extends Square {
+    private List<Player> players;
+    public void enter(Player player) {
+        players.add(player);
+    }
+}
+
+Make software entities open for extension but closed for modifications.
+
+public class Square implements ISquare {
+    public ISquare moveAndLand(int moves) {
+        return game.findSquare(position, moves).landHereOrGoHome();
+    }
+    public ISquare landHereOrGoHome() {
+        return this.isOccupied() ? game.firstSquare() : this ;
+    }
+}
+
+public class Ladder extends Square {
+    public ISquare landHereOrGoHome() {
+        return this.destination().landHereOrGoHome();
+    }
+    protected ISquare destination() {
+        return game.getSquare(position+transport);
+    }
+}
+
+
+
+Delegate responsibility
+
+
+public class Player {
+
+public void moveForward(int moves) {
+
+square.leave(this);
+
+square = square.moveAndLand(moves);
+
+square.enter(this);
+}
+}
+
+
+public class Square implements ISquare {
+
+public ISquare moveAndLand(int moves) {
+    return game.findSquare(position, moves).landHereOrGoHome();
+}
+
+}
+
+
+
+public class Game {
+public ISquare findSquare(...) {
+return this.getSquare(target);
+}
+}
+
+
+Design by contract 
+
+A contract binds the client to pose valid requests, and binds the provider to correctly provide the service.
+
+
+
+

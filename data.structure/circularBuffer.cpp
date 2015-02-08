@@ -1,4 +1,5 @@
 #include<iostream>
+using namespace std;
 
 
 //At a abstract level circular buffer is queue where from one end data is inserted (producer) while 
@@ -10,4 +11,6 @@
 //modulus (divide) instruction.  However, if the buffer is of a power-of-2 size,
 //then a much quicker bitwise-AND instruction can be used instead.
 
+int main () {
 
+}
