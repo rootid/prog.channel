@@ -2,6 +2,13 @@
 
 using namespace std;
 
+
+//:pancake sorting
+//:insert the spatuala to max item idx
+//:flip the max item idx to first
+//:flip all items to size - 1
+//:reduce size
+
 void flip  (int a[],int n) {
 
     int start = 0;
