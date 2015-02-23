@@ -88,9 +88,11 @@ bool scrambleString (string a,string b) {
         return true;
     }
     for (int i=1;i<aLen;i++) {
+       //match left substring with left substring + right substring with right substring 
        bool result = ( scrambleString (a.substr(0,i),b.substr(0,i)) ) &&  
                      ( scrambleString (a.substr(i,aLen - i),b.substr(i,bLen - i)) );
                      //for right part remove out the part of length i 
+       //match left with right + right,left
        result = result || ( scrambleString (a.substr(0,i),b.substr(bLen - i,i) ) &&
                              scrambleString (a.substr(i,aLen - i),b.substr(0,bLen - i) ) );
     

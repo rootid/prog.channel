@@ -16,11 +16,9 @@ void genParenthesis (int n,int k,int leftP,int righP,string &result,vector<strin
     }
     
     if (leftP < n) {
-              
-                 result.push_back ('(');
+                result.push_back ('(');
                 genParenthesis (n,leftP+1,rightP,result,op);
                 result.pop_back();
-                
             }
             if (lefP > rightP) {
                 result.push_back(')');

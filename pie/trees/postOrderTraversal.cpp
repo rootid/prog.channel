@@ -30,6 +30,7 @@ void postOrder (BTNod *root) {
             tStack.push(current);
             current = current->left; 
         }
+        //To move the right child
         current = tStack.top ();
         if (current->right && pre != current->right) {
             current = current->right;
