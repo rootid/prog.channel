@@ -23,11 +23,12 @@ vector<Triangle> findTriangleList (vector<int>& lst) {
         int start = i + 1;
         int end = n - 1;
         while (start < end) {
-            if ( lst[start] + a < a[end] || lst[start]+a > a[end] ) {
+            if ( lst[start] + a < a[end] || lst[end]+a < a[start] ) {
                triList.push_back(new Triangle(lst[start],a,lst[end]));   
                start += 1;
+               end -= 1;
             } else {
-                end -= 1; // all are equal
+                start += 1; // all are equal
             }
         }      
    }
