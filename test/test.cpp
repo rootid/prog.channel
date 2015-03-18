@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<stdlib.h>
 #include<unordered_map>
 using namespace std;
 
@@ -31,11 +32,35 @@ int main () {
 
     //cout << "--" << endl;
     //cout << tMap[10] << endl;
-    test("ATGCGAAA");
-    test("ATGCGAAG");
-    test("ATGCGAAG");
-    test("ATGCGAAA");
+    //test("ATGCGAAA");
+    //test("ATGCGAAG");
+    //test("ATGCGAAG");
+    //test("ATGCGAAA");
     //int hashV = computeHash (st);
     //cout << " st = " << st << ", h = " << hashV << endl;
+
+    string t = "12";
+    cout << atoi(t.c_str()) << endl;
+
+
+    t = "123";
+    cout << stoi(t) << endl;
+
+    string t1 = "#";
+    if (atoi(t1.c_str()) == NULL) {
+        cout << "got null" << endl;
+    }
+
+
+    string t2 = "#";
+    if (stoi(t2) == NULL) {
+        cout << "got null" << endl;
+    }
+
+    //for (int i=0;i<t.length();i++) {
+    //    if (isdigit(t[i]) ) {
+    //        cout << t[i] << endl;
+    //    }
+    //}
 
 }
