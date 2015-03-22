@@ -28,6 +28,24 @@ void deSerializeTree (BTNode*& root,vector<string>& s,int& pos) {
     deSerializeTree(root->right,s,pos);
 }
 
+//NOTE : problem with string is substr returns only single digit 
+BTNode* deSerializeBT (string st) {
+    
+    TreeNode *tmp = NULL;
+    
+    if (st.length() == 0) {
+        return ;
+    }
+
+    tmp = new TreeNode (tmp[0]);    
+    tmp->left = deserilizeBT (st.substr(1,st.length() - 1));
+    tmp-right = deserilizeBT ((st.substr(1,st.length() - 1));
+    
+    return tmp;
+
+
+}
+
 void serializeBT (BTNode *root) {
     if (!root) {
         cout << "#" << ",";
@@ -57,6 +75,7 @@ int main () {
     vector<string> sV(s,s+sizeof(s)/sizeof(s[0]));
     int pos = -1;
     deSerializeTree (root,sV,pos);
+
     //printInorder (root);
     //cout << endl;
     for (int i=0;i<sV.size();i++) {
