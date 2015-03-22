@@ -11,6 +11,15 @@ int sumOfArray (vector<int> a,int start) {
     return 0;
 }
 
+////Recursive sum
+int sumArray (int a[],int n) {
+    int sum = 0;
+    if (n > 0) {
+        sum += (a[n-1] +  sumArray(a,n-1));
+    }
+    return sum;
+}
+
 int main () {
     int a[] = {14,5,6,7,8,9,10,10};
     vector<int> v (a,a+sizeof(a)/sizeof(a[0]));
