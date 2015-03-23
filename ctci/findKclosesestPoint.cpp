@@ -13,7 +13,7 @@ struct Point {
      x(x),y(y) 
     {
     
-    };
+    }
 };
 
 struct Metric {
@@ -23,7 +23,7 @@ struct Metric {
        distance(dist),p (p)
     {
     
-    };
+    }
 };
 
 int cmpDistnce (const Metric &one,const Metric &two) {
