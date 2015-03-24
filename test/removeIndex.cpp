@@ -1,5 +1,5 @@
 #include<iostream>
-#include<sort>
+#include<algorithm>
 using namespace std;
 
 //REmove the elements in A with index from B 
@@ -10,7 +10,7 @@ using namespace std;
 
 void removeUsingIdx (int a[],int b[],int m,int n) {
 
-    sort (a,a+n,greater<int>);
+    sort (a,a+n,greater<int>());
     for (int i=0;i<m;i++) {
         int j = b[i];
         while (j < n) {
