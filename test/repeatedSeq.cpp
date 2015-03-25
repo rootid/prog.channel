@@ -20,7 +20,7 @@ vector<string> findRepeatedSeq (string s,int sLen = 10) {
         return result;
     }
     
-    unordered_set<string> storeV;
+    //unordered_set<string> storeV;
     unordered_map<int,int> storeH;
     for (int i=0;i<len-sLen;i++) {
         string tmp = s.substr(i,sLen); 
