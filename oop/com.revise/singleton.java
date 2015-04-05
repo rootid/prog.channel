@@ -43,7 +43,7 @@ public class Singleton {
 } 
 
 
-//Double checking
+//Double checked locking
 public class Singleton {
 
     //Ensures have only single initalized instance/unique object.
