@@ -7,9 +7,8 @@
 using namespace std;
 
 class HashS {
-    
+
     private : 
-        
         struct HashNode {
             string key;
             string val;
@@ -55,11 +54,12 @@ class HashS {
         void put(string key,string value) {
            
             int idx = hashKey (key);
-            cout << "key = " << key << ",idx = " << idx << endl;
+            //cout << "key = " << key << ",idx = " << idx << endl;
             if (hs[idx].key.length() == 0 ) {
                 hs[idx].key = key;
                 hs[idx].val = value;
             } else {
+                //Always prepend the node achiving the O(1) insert
                 HashNode *tmpNode = new HashNode(key,value);
                 if (hs[idx].next == NULL) {
                     hs[idx].next = tmpNode;
