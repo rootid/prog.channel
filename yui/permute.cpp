@@ -15,7 +15,6 @@ void permuteString (string input,int k,vector<string>&sVec) {
         permuteString(input,k+1,sVec);
         swap(input[k],input[i]);
     }
-        
 
 }
 

@@ -1,0 +1,5 @@
+
+
+u have two candles. Each burn for 60 minutes. How can you measure 45 minutes using this ?
+
+hint : use both candles , think in terms of the direction 
