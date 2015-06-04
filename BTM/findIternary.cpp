@@ -26,22 +26,17 @@ void topologicalSortUtil (string src,unordered_map<string,vector<string> >& trav
     iStack.push(src);
 }
 
-vector<string> findIternary () {
+vector<string> findIternary (string iternaryArr[],int len) {
 
+    //Create graph
     //Each adjacent pair lists the source and destination
-    //TODO : list all the iternary
-    string iternaryArr [] = {"US","Thiland","India","US","Thiland","Bangkok"};
-    int len = sizeof(iternaryArr)/sizeof(iternaryArr[0]);
-    //vector<string> iternary (iternaryArr,iternaryArr + len);
-
-    //create graph
     unordered_map<string,vector<string> > travelG;
     for (int i=0;i<len-1;i+=2)  {
         string src = iternaryArr [i];
         string dest = iternaryArr [i+1];
         travelG[src].push_back(dest);
     }
-    
+    //Traverse DFS 
     unordered_set<string> visited;
     stack<string> iStack;
     for (auto &iter : travelG) {
@@ -52,6 +47,7 @@ vector<string> findIternary () {
        }
     }
 
+    //List out the iternary from original source to destination
     vector<string> result;
     while (!iStack.empty()) {
         string visit = iStack.top();
@@ -64,7 +60,9 @@ vector<string> findIternary () {
 
 int main () {
 
-    findIternary ();
+    string iternaryArr [] = {"US","Thiland","India","US","Thiland","Bangkok"};
+    int len = sizeof(iternaryArr)/sizeof(iternaryArr[0]);
+    findIternary (iternaryArr,len);
 }
 
 

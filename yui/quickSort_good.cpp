@@ -7,16 +7,15 @@ using namespace std;
 
 int partition (vector<string>& s,int start,int end) {
 
-   int pivot = end - 1;
+   int idx = end - 1;
    int i = start - 1;
    while (start < end) {
-       
-       if (s[start].compare(s[pivot]) > 0 ) {
+       if (s[start].compare(s[idx]) > 0 ) {
            swap(s[start],s[++i]);
        }
        start++;
    }
-   swap(s[++i],s[pivot]);
+   swap(s[++i],s[idx]);
    return i;
 
 }

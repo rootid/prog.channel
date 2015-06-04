@@ -20,6 +20,28 @@ int partition (vector<string>& s,int start,int end) {
 
 }
 
+
+int partition (vector<string>& s,int start,int end,int k) {
+
+   int pivot = end - 1;
+   int i = start - 1;
+   while (start < end) {
+       if (s[start].compare(s[pivot]) > 0 ) {
+           swap(s[start],s[++i]);
+       }
+       start++;
+   }
+   swap(s[++i],s[pivot]);
+   if ( i == k) {
+       return s[i];
+   } 
+   if (i < k) {
+       return partition (s,i+1,end,k);
+   } 
+   if (i > k)
+       return partition (s,start,i,k);
+}
+
 void printList (vector<string>& l) {
     for (int i=0;i<l.size();i++) {
         cout << l[i] << ",";
